@@ -38,4 +38,4 @@ jobs:
     # 7️⃣ Push Docker image
     - name: Docker Push
       run: |
-        docker push USER/url-shortener:latest
+        docker push adirai30/url-shortener:latest
