@@ -23,5 +23,19 @@ jobs:
       run: |
         python -m py_compile app.py
         
-    - name: Docker Build 
-      run: docker build -t adirai30/url-shortener00 .
+    
+    # 5️⃣ Login to Docker Hub
+    - name: Docker Login
+      run: |
+        echo "${{ secrets.DOCKER_PASSWORD }}" | docker login \
+          -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+    # 6️⃣ Build Docker image
+    - name: Docker Build
+      run: |
+        docker build -t USER/url-shortener:latest .
+
+    # 7️⃣ Push Docker image
+    - name: Docker Push
+      run: |
+        docker push USER/url-shortener:latest
