@@ -38,12 +38,12 @@ jobs:
     # 6️⃣ Build Docker image
     - name: Docker Build
       run: |
-        docker build -t shahil004/url-shortener:latest .
+        docker build -t adirai30/url-shortener:latest .
 
     # 7️⃣ Push Docker image
     - name: Docker Push
       run: |
-        docker push shahil004/url-shortener:latest
+        docker push adirai30/url-shortener:latest
 
     # ============================
     # 🚀 DEPLOY TO EC2
@@ -57,12 +57,12 @@ jobs:
         script: |
           docker stop url-shortener || true
           docker rm url-shortener || true
-          docker pull shahil004/url-shortener:latest
+          docker pull adirai30/url-shortener:latest
           docker run -d \
             --restart=always \
             -p 5000:5000 \
             --name url-shortener \
-            shahil004/url-shortener:latest
+            adirai30/url-shortener:latest
 
 
 
